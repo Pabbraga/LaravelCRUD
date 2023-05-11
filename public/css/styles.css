@@ -14,16 +14,21 @@ header {
 }
 
 .nav-brand > h1 {
-    margin-right: 5px;
+    margin-left: 15px;
 }
 
 .nav-link {
+    margin-left: 15px;
     color: #fff;
 }
 
 h1 {
     text-align: center;
     padding: 5px;
+}
+
+.container {
+    padding-top: 15px;
 }
 
 #users-container {

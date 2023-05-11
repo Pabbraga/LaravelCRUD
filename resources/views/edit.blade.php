@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Resultado</title>
+    <title>Editar Usuário</title>
 
     <!--CSS Bootstrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -24,21 +24,27 @@
         </ul>
     </header>
     <div class="container col-md-6 offset-md-3">
-        @if($user)
-            <div class="form-body">
-                <div class="card-body" style="padding: 10px">
-                    <p>ID: {{$user['id']}}</p>
-                    <p>Nome: {{$user['name']}}</p>
-                    <p>Email: {{$user['email']}}</p>
-                    <p>Idade: {{$user['age']}}</p>
-                </div>
+        <h4>Editar Usuário</h4>
+        <form action="/user/{{$user['id']}}" method="post">
+            @csrf
+            <input type="hidden" name="_method" value="PUT">
+            <div class="form-group">
+                <label>Nome:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{$user['name']}}">
             </div>
-        @elseif($msg)
-            <h4>{{$msg}}</h4>
-        @endif
+            <div class="form-group">
+                <label>E-mail:</label>
+                <input type="text" class="form-control" id="email" name="email" value="{{$user['email']}}">
+            </div>
+            <div class="form-group">
+                <label>Idade:</label>
+                <input type="number" class="form-control" id="age" name="age" value="{{$user['age']}}">
+            </div>
+            <input type="submit" value="Cadastrar" class="btn btn-primary is-right">
+        </form>
     </div>
     <footer>
         <p>UsersData &copy; 2023</p>
-    </footer>  
+    </footer>    
 </body>
 </html>

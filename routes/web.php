@@ -15,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 
-Route::get('/', [UserController::class, 'index'])->name('users.index');
+Route::get('/', [UserController::class, 'index'])->name('user.index');
 
-Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 
-Route::get('/users/result', [UserController::class, 'update'])->name('users.update');
+Route::post('/user', [UserController::class, 'store'])->name('user.store');
 
-Route::post('/users', [UserController::class, 'store'])->name('users.store');
+Route::get('/user/{id}', [UserController::class, 'show'])->where('id', '[0-9]{1,5}')->name('user.show'); // não finalizado
+
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->where('id', '[0-9]{1,5}')->name('user.edit');
+
+Route::put('/user/{id}', [UserController::class, 'update'])->where('id', '[0-9]{1,5}')->name('user.update');
+
+Route::get('/user/delete/{id}', [UserController::class, 'destroy'])->where('id', '[0-9]{1,5}')->name('user.destroy');

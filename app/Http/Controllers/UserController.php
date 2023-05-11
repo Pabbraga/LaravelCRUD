@@ -37,17 +37,11 @@ class UserController extends Controller
         return view("home", ['users' => $this->users]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view("create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $id = 0;
@@ -69,38 +63,35 @@ class UserController extends Controller
         return view('result', ['user' => $user]);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         foreach($this->users as $user) {
-            if($user['id'] === $id) {
+            if($user['id'] == $id) {
                 return view('result', ['user' => $user]);
             }
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         foreach($this->users as $user) {
-            if($user['id'] === $id) {
-                
+            if($user['id'] == $id) {
+                return view("edit", ['user' => $user]);                
             }
-        }
+        }   
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $name = $request->name;
         $email = $request->email;
         $age = $request->age;
+
+        foreach($this->users as $user) {
+            if($user['id'] === $id) {
+                $user = $user;
+            }
+        }
 
         $user['name'] = $name;
         $user['email'] = $email;
@@ -108,15 +99,12 @@ class UserController extends Controller
         return view('result', ['user' => $user, 'msg' => "Usuário editado com sucesso."]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         foreach($this->users as $user) {
-            if($user['id'] === $id) {
-                return view('result', ['msg' => "Usuário excluído com sucesso."]);
+            if($user['id'] == $id) {
+                return view("result", ['user'=> null,'msg' => "Usuário excluído com sucesso."]);                
             }
-        }
+        }   
     }
 }

@@ -16,22 +16,6 @@
         <div class="nav-brand">
             <h1>UsersData</h1>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/users/show" class="nav-link">Buscar Usuário</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/users/create" class="nav-link">Cadastrar Usuário</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/users/edit" class="nav-link">Editar Usuário</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/users/delete" class="nav-link">Apagar Usuário</a>
-                </li>
-            </ul>
-        </nav>
     </header>
     <div id="users-container">
         @foreach ($users as $user)
@@ -45,6 +29,8 @@
             </div>
         @endforeach
     </div>
-    <footer><p>UsersData &copy; 2023</p></footer>
+    <footer>
+        <p>UsersData &copy; 2023</p>
+    </footer>
 </body>
 </html>
